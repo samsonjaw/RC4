@@ -78,17 +78,17 @@ string Base64_decode(string str){
 //---------------RC4-----------------------
 
 string ciphertext;
-unsigned char K[256];//¤@©w­nunsigned¡A½d³ò¤~¬O0~255
+unsigned char K[256];//ä¸€å®šè¦unsignedï¼Œç¯„åœæ‰æ˜¯0~255
 unsigned char S[256];
 void KSA(string key){
-    for(int i = 0; i < 256; i++){//ªì©l¤ÆS²°
+    for(int i = 0; i < 256; i++){//åˆå§‹åŒ–Sç›’
         S[i] = i;
     }
-    for(int i = 0; i < 256; i++){//ÂX®i±KÆ_
+    for(int i = 0; i < 256; i++){//æ“´å±•å¯†é‘°
         K[i] = key[i % key.size()];
     }
     int j = 0;
-    for(int i = 0; i < 256; i++){//¸m´«¡A¥´¶ÃSªí
+    for(int i = 0; i < 256; i++){//ç½®æ›ï¼Œæ‰“äº‚Sè¡¨
         j = (j + S[i] + K[i]) % 256;
         swap(S[i],S[j]);
     }
@@ -119,33 +119,33 @@ bool isASCII(string str){
 int main(){
     string key;
     string text;
-    cout << "ª`:RC4¬°¹ïºÙ¬°¹ïºÙ¥[±Kºâªk¡A¥[¸Ñ±K¨Ï¥Î¦P¤@²Õ±KÆ_" << '\n';
-    //cout << "ª`:RC4¥[±K¤£¤ä´©string¿é¥X¡A®e©öÅã¥Ü¶Ã½X(¸Ñ±K¤ä´©)" << '\n';
+    cout << "æ³¨:RC4ç‚ºå°ç¨±ç‚ºå°ç¨±åŠ å¯†ç®—æ³•ï¼ŒåŠ è§£å¯†ä½¿ç”¨åŒä¸€çµ„å¯†é‘°" << '\n';
+    //cout << "æ³¨:RC4åŠ å¯†ä¸æ”¯æ´stringè¼¸å‡ºï¼Œå®¹æ˜“é¡¯ç¤ºäº‚ç¢¼(è§£å¯†æ”¯æ´)" << '\n';
 
     while(1){
-        cout << "­n¶i¦æ¥[±K½Ğ¿é¤J0¡A¸Ñ±K½Ğ¿é¤J1" << '\n';
+        cout << "è¦é€²è¡ŒåŠ å¯†è«‹è¼¸å…¥0ï¼Œè§£å¯†è«‹è¼¸å…¥1" << '\n';
         int flag1;cin >> flag1;
-        if(!flag1){//¥[±K
-            cout << "¿é¤Jªº©ú¤å¥H¦r¸`Àx¦s(´N¬O±`¨£ªº1byteÀx¦s¤@­Ó)ªº½Ğ¿é¤J0"<<'\n';
-            cout << "¿é¤Jªº©ú¤å¥HBase64½s½Xªº½Ğ¿é¤J1" << '\n';
+        if(!flag1){//åŠ å¯†
+            cout << "è¼¸å…¥çš„æ˜æ–‡ä»¥å­—ç¯€å„²å­˜(å°±æ˜¯å¸¸è¦‹çš„1byteå„²å­˜ä¸€å€‹)çš„è«‹è¼¸å…¥0"<<'\n';
+            cout << "è¼¸å…¥çš„æ˜æ–‡ä»¥Base64ç·¨ç¢¼çš„è«‹è¼¸å…¥1" << '\n';
             int flag2; cin >> flag2;
 
             cin.ignore();
-            cout << "½Ğ¿é¤J©ú¤å\n";
+            cout << "è«‹è¼¸å…¥æ˜æ–‡\n";
             getline(cin, text);
 
             if(flag2){
                 text = Base64_decode(text);
             }
         }
-        if(flag1){//¸Ñ±K
-            cout << "½Ğ¿é¤JBase64½s½Xªº±K¤å" << '\n';
+        if(flag1){//è§£å¯†
+            cout << "è«‹è¼¸å…¥Base64ç·¨ç¢¼çš„å¯†æ–‡" << '\n';
             cin.ignore();
             getline(cin,text);
             text = Base64_decode(text);
         }
 
-        cout << "½Ğ¿é¤J±KÆ_(±KÆ_¥H¦r¸`Àx¦s³B²z)\n";
+        cout << "è«‹è¼¸å…¥å¯†é‘°(å¯†é‘°ä»¥å­—ç¯€å„²å­˜è™•ç†)\n";
         getline(cin, key);
         KSA(key);
         ciphertext.clear();
@@ -153,13 +153,13 @@ int main(){
         PRGA_XOR(text);
 
         if(!flag1){
-            cout << "±K¤åªºBase64½s½X:" << Base64_encode(ciphertext) << '\n';
+            cout << "å¯†æ–‡çš„Base64ç·¨ç¢¼:" << Base64_encode(ciphertext) << '\n';
         }
         if(flag1){
-            cout << "©ú¤å¬°:" << ciphertext;
+            cout << "æ˜æ–‡ç‚º:" << ciphertext;
             cout.clear();
             cout << '\n';
-            cout << "©ú¤åªºBase64½s½X:" << Base64_encode(ciphertext) << '\n';
+            cout << "æ˜æ–‡çš„Base64ç·¨ç¢¼:" << Base64_encode(ciphertext) << '\n';
         }
         cout << "-------------" << '\n';
     }
