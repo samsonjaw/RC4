@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
 using namespace std;
 //--------------Base64---------------------
 int sBase64[64] = {
@@ -120,14 +121,20 @@ int main(){
     string key;
     string text;
     cout << "注:RC4為對稱為對稱加密算法，加解密使用同一組密鑰" << '\n';
-    //cout << "注:RC4加密不支援string輸出，容易顯示亂碼(解密支援)" << '\n';
+    cout << "注:RC4加密不支援string輸出，容易顯示亂碼(解密支援)" << '\n';
 
     while(1){
-        cout << "要進行加密請輸入0，解密請輸入1" << '\n';
+        cout << "===============================請選擇功能===============================\n";
+        cout << "                               0.encrypt加密\n";
+        cout << "                               1.decrypt解密\n";
+        cout << "輸入你的選擇(0/1)\n";
         int flag1;cin >> flag1;
         if(!flag1){//加密
-            cout << "輸入的明文以字節儲存(就是常見的1byte儲存一個)的請輸入0"<<'\n';
-            cout << "輸入的明文以Base64編碼的請輸入1" << '\n';
+            cout << "===============================明文格式=================================\n";
+            cout << "                               0.字節儲存(就是常見的1byte儲存一個)\n";
+            cout << "                               1.Base64編碼(會先轉為字節儲存再加密)\n";
+            cout << "輸入你的選擇(0/1)\n";
+
             int flag2; cin >> flag2;
 
             cin.ignore();
