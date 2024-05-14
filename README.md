@@ -4,10 +4,10 @@ This is a simple implementation of the RC4 symmetric encryption algorithm in C++
 ## Usage
 Upon running the program, you will encounter the following prompts:
 
-1.Select Operation Mode:
+1. Select Operation Mode:
 Enter 0 for encryption.
 Enter 1 for decryption.
-2.Input Format (for encryption only):
+2. Input Format (for encryption only):
 Enter 0 if your plaintext is in byte storage (typical one byte per character storage).
 Enter 1 if your plaintext is in Base64 encoded format.
 3.Input Plaintext or Ciphertext:
